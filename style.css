@@ -22,8 +22,8 @@ button, .envelope, .photo-card, .back-btn, a {
     align-items: center;
     text-align: center;
     width: 100%;
-    max-width: 450px;
-    padding: 20px;
+    max-width: 600px;
+    padding: 50px;
     animation: fadeIn 0.6s ease-out;
     overflow-x: hidden;
 }
@@ -252,11 +252,7 @@ button, .envelope, .photo-card, .back-btn, a {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     transform-origin: top center;
-    transition: transform 0.8s ease;
     clip-path: polygon(0 0, 50% 100%, 100% 0);
-}
-.envelope.opening::before {
-    transform: rotateX(-180deg);
 }
 .envelope::after {
     content: ""; position: absolute; bottom: 0; left: 0;
@@ -382,7 +378,7 @@ button, .envelope, .photo-card, .back-btn, a {
 #page5 > p { font-size: 1.3em; margin: 20px 0; }
 #page5 .btn { padding: 15px 40px; font-size: 1.1em; }
 
-#page6 .card { width: 75%; max-width: 300px; padding: 40px; }
+#page6 .card { width: 75%; max-width: 229px; padding: 36px; }
 #page6 .cursive { font-size: 2.2em; }
 #page6 img { border-radius: 10px; margin: 20px 0; width: 100%; }
 #page6 .btn { padding: 15px 40px; font-size: 1.1em; }

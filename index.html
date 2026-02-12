@@ -186,7 +186,7 @@
             setTimeout(() => {
                 showPage('page2');
                 envelope.classList.remove('opening');
-            }, 800);
+            }, 100);
         }
 
         function showPage(pageId) {
@@ -227,13 +227,13 @@
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
             
-            // Increase YES button size by 40% with smooth transition
+            // Increase YES button size by 80% with ultra-fast transition
             if (!yesBtn.dataset.scale) {
                 yesBtn.dataset.scale = 1;
-                yesBtn.style.transition = 'transform 0.15s ease-out';
+                yesBtn.style.transition = 'transform 0.08s ease-out';
             }
             const currentScale = parseFloat(yesBtn.dataset.scale);
-            const newScale = currentScale + 0.8;
+            const newScale = currentScale + 0.2;
             yesBtn.dataset.scale = newScale;
             yesBtn.style.transform = `scale(${newScale})`;
         }
