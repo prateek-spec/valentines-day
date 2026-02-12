@@ -306,7 +306,7 @@ button, .envelope, .photo-card, .back-btn, a {
     gap: 30px;
     justify-content: center;
     margin-top: 15px;
-    width: 100%;
+    width: 140%;
     padding: 0 10px;
     max-width: 100%;
     overflow: hidden;
