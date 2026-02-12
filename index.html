@@ -8,6 +8,30 @@
 </head>
 <body>
 
+<audio id="bgMusic" loop>
+        <source src="gif\Edd_Sheeran_-_Perfect_(mp3.pm).mp3" type="audio/mpeg">
+        <source src="gif\Edd_Sheeran_-_Perfect_(mp3.pm).ogg" type="audio/ogg">
+    </audio>
+
+    <script>
+        // Function to start music
+        function playAudio() {
+            var audio = document.getElementById("bgMusic");
+            audio.play().catch(function(error) {
+                console.log("Autoplay blocked. Waiting for user interaction.");
+            });
+        }
+
+        // This triggers the music on the very first click anywhere on the page
+        // This bypasses the browser's "no-sound-autoplay" security rule.
+        window.addEventListener('click', playAudio, { once: true });
+        
+        // Also triggers on scroll or keypress for better chance of playing
+        window.addEventListener('scroll', playAudio, { once: true });
+        window.addEventListener('keydown', playAudio, { once: true });
+    </script>
+
+
     <!-- Back Button (Global after Page 1) -->
     <div id="global-back" class="back-btn" onclick="goBack()">←</div>
 
