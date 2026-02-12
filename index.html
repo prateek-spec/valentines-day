@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Cutiepie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Back Button (Global after Page 1) -->
+    <div id="global-back" class="back-btn" onclick="goBack()">←</div>
+
+    <!-- PAGE 1: Start [Source 1] -->
+    <div id="page1" class="page active">
+        <div class="envelope" onclick="openEnvelope()" onmouseenter="hoverTexts(true)" onmouseleave="hoverTexts(false)">
+            <div class="seal">❤</div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+        <div class="cursive page1-text page1-title">💖 For My Cutiepie 💖</div>
+        <div class="subtitle page1-text page1-subtitle">✨ Tap to open your surprise ✨</div>
+    </div>
+
+    <!-- PAGE 2: Ask something [Source 2] -->
+    <div id="page2" class="page">
+        <div class="card">
+            <img class="page2-img" src="gif/bubu-dudu-kiss-CAiM-dxi.gif" width="180" alt="Bears Hugging">
+            <div class="cursive">Hey Cutiepie! <span class="page2-heart">💖</span></div>
+            <p>I want to ask you something?</p>
+            <p class="subtitle">Can I?</p>
+            <div class="btn-container">
+                <button class="btn btn-pink" onclick="showPage('page4')">YES 💖</button>
+                <button class="btn btn-pink" onclick="showPage('page3')">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: Rejection [Source 3] -->
+    <div id="page3" class="page">
+        <div class="card">
+            <img src="gif\angry-cat-popup-CU1YafBs.png" width="200" alt="Angry Cat">
+            <div class="cursive page3-angry">What did you Sayyyy??? 😾</div>
+            <p class="subtitle">I will go back to say YES!</p>
+            <div class="btn-container">
+                <button class="btn btn-red" onclick="showPage('page2')">Go Back 💕</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: Valentine Question [Source 4] -->
+    <div id="page4" class="page">
+        <!-- Replace 'YOUR_GIF_URL' with your custom GIF URL -->
+        <img src="gif\cute-panda-BrEcrxwV.gif" width="180" alt="Dog with Flowers">
+        <div class="cursive">Will you be my Valentine? 💖</div>
+        <p>Please say yes My Love! 🥺</p>
+        <div class="btn-container">
+            <button class="btn btn-pink btn-yes" onclick="showPage('page5')">YES! 💖</button>
+            <button id="no-btn" class="btn btn-outline" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No 🥺</button>
+        </div>
+    </div>
+
+    <!-- PAGE 5: Success [Source 5] -->
+    <div id="page5" class="page">
+        <img src="gif\bears-hug-BZpdFC2u.png" width="280" alt="Happy Dog">
+        <div class="cursive page5-text">I Knew You'll Say Yes! <span class="page5-heart">💞</span></div>
+        <p>You just made me the happiest! 🥹</p>
+        <div class="hearts-wave">
+            <span class="heart-float">💖</span>
+            <span class="heart-float">💖</span>
+            <span class="heart-float">💖</span>
+            <span class="heart-float">💖</span>
+            <span class="heart-float">💖</span>
+            <span class="heart-float">💖</span>
+        </div>
+        <div class="btn-container">
+            <button class="btn btn-pink" onclick="showPage('page6')">Continue 💕</button>
+        </div>
+    </div>
+
+    <!-- PAGE 6: Roses [Source 6] -->
+    <div id="page6" class="page">
+        <div class="card">
+            <div class="cursive">Roses for You! 💖</div>
+            <img src="gif\flower-bouquet-BysML-IW.png" alt="Roses">
+            <div class="btn-container">
+                <button class="btn btn-red" onclick="showPage('page7')">Read my love letter 💌</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 7: The Letter [Source 7] -->
+    <div id="page7" class="page">
+        <div class="card">
+            <div class="cursive">❤️ For My Love ❤️</div>
+            <p class="letter-text">
+                My Dearest Cutiepie, <br><br>
+                From the moment you came into my life, everything changed. Your smile lights up my darkest days. <br><br>
+                You are my best friend, my soulmate, and my everything. Every second with you feels like a beautiful dream. <br><br>
+                This Valentine's Day, I want you to know: My heart belongs to you, today, tomorrow, and forever. <br><br>
+                Thank you for loving me and being my world.
+            </p>
+            <p class="signature">Forever Yours ❤️<br><small>(Always & Forever)</small></p>
+            <div class="btn-container">
+                <button class="btn btn-red" onclick="showPage('page8')">See Our Memories 💝</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 8: Memories [Source 8] -->
+    <div id="page8" class="page">
+        <div class="photo-overlay" onclick="closePhoto()"></div>
+        <div class="cursive">❤️ Happy Valentine's Day ❤️</div>
+        <p>My Love 💞</p>
+        <p class="subtitle">✨ Tap a photo to see it closer ✨</p>
+        <div class="gallery">
+            <!-- PHOTO 1: Replace 'YOUR_IMAGE_URL_1' with your first photo URL -->
+            <div class="photo-card" onclick="enlargePhoto(this)">
+                <img src="gif\flower-bouquet-BysML-IW.png" alt="Memory 1">
+                <div class="photo-caption">My Beautiful Love ❤️</div>
+            </div>
+            
+            <!-- PHOTO 2: Replace 'YOUR_IMAGE_URL_2' with your second photo URL -->
+            <div class="photo-card" onclick="enlargePhoto(this)">
+                <img src="YOUR_IMAGE_URL_2" alt="Memory 2">
+                <div class="photo-caption">Forever Together 🥰</div>
+            </div>
+            
+            <!-- PHOTO 3: Replace 'YOUR_IMAGE_URL_3' with your third photo URL -->
+            <div class="photo-card" onclick="enlargePhoto(this)">
+                <img src="gif\proposal-dog-1-DWxdz0EN.png" alt="Memory 3">
+                <div class="photo-caption">Love You Always ✨</div>
+            </div>
+            
+            <!-- PHOTO 4: Replace 'YOUR_IMAGE_URL_4' with your fourth photo URL -->
+            <div class="photo-card" onclick="enlargePhoto(this)">
+                <img src="YOUR_IMAGE_URL_4" alt="Memory 4">
+                <div class="photo-caption">Best Memories 💕</div>
+            </div>
+            
+            <!-- PHOTO 5: Replace 'YOUR_IMAGE_URL_5' with your fifth photo URL -->
+            <div class="photo-card" onclick="enlargePhoto(this)">
+                <img src="YOUR_IMAGE_URL_5" alt="Memory 5">
+                <div class="photo-caption">Our Adventure 🌟</div>
+            </div>
+            
+            <!-- PHOTO 6: Replace 'YOUR_IMAGE_URL_6' with your sixth photo URL -->
+            <div class="photo-card" onclick="enlargePhoto(this)">
+                <img src="gif\proposal-dog-2-CwUW_uen.png" alt="Memory 6">
+                <div class="photo-caption">Happy Times 😊</div>
+            </div>
+            
+            <!-- PHOTO 7: Replace 'YOUR_IMAGE_URL_7' with your seventh photo URL -->
+            <div class="photo-card" onclick="enlargePhoto(this)">
+                <img src="YOUR_IMAGE_URL_7" alt="Memory 7">
+                <div class="photo-caption">My Everything 💖</div>
+            </div>
+            
+            <!-- PHOTO 8: Replace 'YOUR_IMAGE_URL_8' with your eighth photo URL -->
+            <div class="photo-card" onclick="enlargePhoto(this)">
+                <img src="YOUR_IMAGE_URL_8" alt="Memory 8">
+                <div class="photo-caption">Forever & Always 💞</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let history = ['page1'];
+
+        function hoverTexts(isHovering) {
+            const texts = document.querySelectorAll('.page1-text');
+            texts.forEach(text => {
+                if (isHovering) {
+                    text.classList.add('hover-active');
+                } else {
+                    text.classList.remove('hover-active');
+                }
+            });
+        }
+
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            envelope.classList.add('opening');
+            setTimeout(() => {
+                showPage('page2');
+                envelope.classList.remove('opening');
+            }, 800);
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            // Show/Hide back button
+            document.getElementById('global-back').style.display = (pageId === 'page1') ? 'none' : 'flex';
+            
+            if (history[history.length - 1] !== pageId) {
+                history.push(pageId);
+            }
+            window.scrollTo(0,0);
+        }
+
+        function goBack() {
+            if (history.length > 1) {
+                history.pop(); // Remove current
+                const prevPage = history[history.length - 1];
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                document.getElementById(prevPage).classList.add('active');
+                
+                // Show/Hide back button
+                document.getElementById('global-back').style.display = (prevPage === 'page1') ? 'none' : 'flex';
+                
+                window.scrollTo(0,0);
+            }
+        }
+
+        function moveNoButton() {
+            const btn = document.getElementById('no-btn');
+            const yesBtn = document.querySelector('#page4 .btn-yes');
+            
+            // Move the No button
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+            
+            // Increase YES button size by 40% with smooth transition
+            if (!yesBtn.dataset.scale) {
+                yesBtn.dataset.scale = 1;
+                yesBtn.style.transition = 'transform 0.15s ease-out';
+            }
+            const currentScale = parseFloat(yesBtn.dataset.scale);
+            const newScale = currentScale + 0.8;
+            yesBtn.dataset.scale = newScale;
+            yesBtn.style.transform = `scale(${newScale})`;
+        }
+        
+        function enlargePhoto(photoCard) {
+            photoCard.classList.add('enlarged');
+            document.querySelector('.photo-overlay').classList.add('active');
+        }
+        
+        function closePhoto() {
+            document.querySelectorAll('.photo-card').forEach(card => {
+                card.classList.remove('enlarged');
+            });
+            document.querySelector('.photo-overlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

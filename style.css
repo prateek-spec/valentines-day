@@ -1,0 +1,621 @@
+/* Global Styles based on Sources [1-4] */
+body {
+    background-color: #3b1019; /* Dark maroon background from sources */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
+    color: #fce4ec;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="28" font-size="28">❤️</text></svg>') 16 16, auto;
+}
+
+button, .envelope, .photo-card, .back-btn, a {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="28" font-size="28">💖</text></svg>') 16 16, pointer !important;
+}
+
+.page {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    animation: fadeIn 0.6s ease-out;
+    overflow-x: hidden;
+}
+
+.active { display: flex; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Card Component [Sources 2, 3, 6, 7] */
+.card {
+    background-color: #fef1f5; /* Light pink card background */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: #4a101d;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    border: 1px solid #f8bbd0;
+}
+
+/* Page 2 specific animations */
+.page2-img {
+    transition: transform 0.4s ease;
+}
+
+.page2-img:hover {
+    transform: scale(1.1);
+}
+
+.page2-heart {
+    display: inline-block;
+    animation: heartBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Page 3 specific animations */
+.page3-img {
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+.page3-angry {
+    animation: angryPulse 1s ease-in-out infinite;
+}
+
+@keyframes angryPulse {
+    0%, 100% { transform: scale(1); color: #e91e63; }
+    50% { transform: scale(1.05); color: #c2185b; }
+}
+
+/* Page 5 specific animations */
+.page5-img {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.page5-heart {
+    display: inline-block;
+    animation: heartSpin 2s ease-in-out infinite;
+}
+
+@keyframes heartSpin {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.3) rotate(-15deg); }
+    75% { transform: scale(1.3) rotate(15deg); }
+}
+
+.page5-text {
+    animation: celebrate 1.5s ease-in-out infinite;
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+/* Page 5 - Flowing hearts */
+.hearts-wave {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    padding: 20px 0;
+    overflow: visible;
+    width: 100%;
+    justify-content: center;
+}
+
+.heart-float {
+    font-size: 1.5em;
+    animation: waveFloat 3s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.heart-float:nth-child(1) { animation-delay: 0s; }
+.heart-float:nth-child(2) { animation-delay: 0.2s; }
+.heart-float:nth-child(3) { animation-delay: 0.4s; }
+.heart-float:nth-child(4) { animation-delay: 0.6s; }
+.heart-float:nth-child(5) { animation-delay: 0.8s; }
+.heart-float:nth-child(6) { animation-delay: 1s; }
+
+@keyframes waveFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Navigation Buttons [Sources 2, 3, 5, 6, 7] */
+.btn-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s, border 0.3s;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+    z-index: 1000;
+    border: 2px solid transparent;
+    pointer-events: auto;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* Special YES button hover - make it bigger */
+.btn-yes:hover {
+    transform: scale(1.2);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.9);
+}
+
+/* Page 4 - Make YES button grow when hovering No */
+#no-btn:hover ~ .btn-container .btn-yes,
+.btn-container:has(#no-btn:hover) .btn-yes {
+    transform: scale(1.5);
+    transition: transform 0.3s ease;
+}
+
+.btn-pink { background-color: #f8bbd0; color: #ad1457; }
+.btn-red { background-color: #e91e63; color: white; }
+.btn-outline { background: transparent; border: 2px solid #e91e63; color: #e91e63; }
+
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: white;
+    color: #3b1019;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.15) translateX(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    background: #f8bbd0;
+}
+
+/* Typography */
+.cursive { font-family: 'Brush Script MT', cursive; font-size: 2.2em; color: #e91e63; margin: 10px 0; }
+.subtitle { font-size: 0.9em; opacity: 0.8; margin-top: 5px; }
+
+/* Page 1 text hover effects */
+.page1-text {
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+    cursor: default;
+}
+.page1-text:hover, .page1-text.hover-active {
+    transform: perspective(1000px) translateZ(20px) scale(1.05);
+}
+
+/* Page 1: Envelope Styling [Source 1] */
+.envelope {
+    width: 420px;
+    height: 270px;
+    background-color: #fce4ec;
+    position: relative;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+.envelope:hover {
+    transform: perspective(1000px) translateZ(40px) scale(1.05);
+}
+.envelope::before {
+    content: ""; position: absolute; top: 0; left: 0;
+    border-left: 210px solid transparent; border-right: 210px solid transparent;
+    border-top: 142px solid #f8bbd0; z-index: 2;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transform-origin: top center;
+    transition: transform 0.8s ease;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+.envelope.opening::before {
+    transform: rotateX(-180deg);
+}
+.envelope::after {
+    content: ""; position: absolute; bottom: 0; left: 0;
+    border-left: 210px solid transparent; border-right: 210px solid transparent;
+    border-bottom: 142px solid #f8bbd0; z-index: 2;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+.seal {
+    position: absolute; top: 50%; left: 50%; 
+    width: 80px; height: 80px; background: #9e1b32; border-radius: 50%;
+    z-index: 3; display: flex; justify-content: center; align-items: center; color: #fce4ec;
+    font-size: 36px; box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    animation: heartPump 1s ease-in-out infinite;
+}
+
+@keyframes heartPump {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* Star sparkles around heart */
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 4;
+    animation: sparkleFloat 2s ease-in-out infinite;
+    color: #ffeb3b;
+    font-size: 20px;
+    text-shadow: 0 0 10px #ffeb3b;
+}
+.sparkle::before {
+    content: "✨";
+}
+.sparkle:nth-child(1) { top: -10px; left: -10px; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: -10px; right: -10px; animation-delay: 0.5s; }
+.sparkle:nth-child(3) { bottom: -10px; left: -10px; animation-delay: 1s; }
+.sparkle:nth-child(4) { bottom: -10px; right: -10px; animation-delay: 1.5s; }
+
+@keyframes sparkleFloat {
+    0%, 100% { opacity: 0.3; transform: scale(0.8) translateY(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) translateY(-5px) rotate(180deg); }
+}
+
+/* Page 8: Memories Gallery [Source 8] */
+.gallery { 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-content: center;
+    margin-top: 15px;
+    width: 100%;
+    padding: 0 10px;
+    max-width: 100%;
+    overflow: hidden;
+}
+.photo-card {
+    background: white;
+    padding: 10px 10px 20px 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+.photo-card:nth-child(1) { transform: rotate(-3deg); }
+.photo-card:nth-child(2) { transform: rotate(2deg); }
+.photo-card:nth-child(3) { transform: rotate(-2deg); }
+.photo-card:nth-child(4) { transform: rotate(3deg); }
+.photo-card:nth-child(5) { transform: rotate(-2deg); }
+.photo-card:nth-child(6) { transform: rotate(3deg); }
+.photo-card:nth-child(7) { transform: rotate(-3deg); }
+.photo-card:nth-child(8) { transform: rotate(2deg); }
+.photo-card:hover { transform: scale(1.05) rotate(0deg); z-index: 10; }
+
+/* Enlarged photo view */
+.photo-card.enlarged {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg) scale(2.5) !important;
+    z-index: 1000;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
+/* Overlay backdrop */
+.photo-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+}
+.photo-overlay.active {
+    display: block;
+}
+
+.placeholder-img { width: 100%; height: 110px; background: #eee; margin-bottom: 7px; }
+.photo-caption { color: #4a101d; font-size: 0.75em; font-weight: bold; }
+
+/* Specific page styles */
+#global-back { display: none; }
+
+.page1-title { color: #f48fb1; font-size: 3em; }
+.page1-subtitle { font-size: 1.3em; }
+
+#page2 .cursive { font-size: 2.5em; }
+#page2 .card p:first-of-type { color: #e91e63; font-style: italic; font-size: 1.4em; font-weight: 500; margin: 20px 0; }
+#page2 .subtitle { font-size: 1.2em; }
+#page2 .btn { padding: 15px 40px; font-size: 1.1em; }
+
+#page3 .cursive { font-size: 2.5em; }
+#page3 .subtitle { font-size: 1.3em; margin: 20px 0; }
+#page3 .btn { padding: 15px 40px; font-size: 1.1em; }
+
+#page4 .cursive { color: white; font-family: serif; }
+#page4 #no-btn { color: white; border-color: #ad1457; }
+
+#page5 .cursive { font-size: 2.5em; color: #f48fb1; }
+#page5 > p { font-size: 1.3em; margin: 20px 0; }
+#page5 .btn { padding: 15px 40px; font-size: 1.1em; }
+
+#page6 .card { width: 75%; max-width: 300px; padding: 40px; }
+#page6 .cursive { font-size: 2.2em; }
+#page6 img { border-radius: 10px; margin: 20px 0; width: 100%; }
+#page6 .btn { padding: 15px 40px; font-size: 1.1em; }
+
+#page7 .card { text-align: left; padding: 35px 30px; width: 90%; max-width: 600px; }
+#page7 .cursive { text-align: center; font-size: 2.2em; }
+#page7 .letter-text { font-style: italic; font-size: 1.1em; line-height: 1.6; margin: 20px 0; }
+#page7 .signature { text-align: right; font-weight: bold; color: #e91e63; font-size: 1.1em; }
+#page7 .signature small { font-size: 0.85em; }
+#page7 .btn-container { margin-top: 15px; }
+#page7 .btn { padding: 12px 35px; font-size: 1em; }
+
+#page8 .cursive { color: white; font-size: 2.5em; margin: 8px 0; }
+#page8 > p:first-of-type { font-size: 1.3em; margin: 6px 0; }
+#page8 .subtitle { font-size: 1em; margin: 6px 0 12px 0; }
+#page8 img { width: 100%; height: 140px; object-fit: cover; background: #eee; }
+
+/* Mobile Responsiveness - Tablets and Smaller */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .page {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .card {
+        width: 95%;
+        max-width: 100%;
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+
+    .cursive { font-size: 1.8em; }
+    .subtitle { font-size: 0.85em; }
+
+    .btn-container {
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+        border-radius: 20px;
+    }
+
+    .back-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2em;
+        top: 15px;
+        left: 15px;
+    }
+
+    /* Page-specific adjustments */
+    #page1 .page {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    #page1 .envelope {
+        width: 280px;
+        height: 190px;
+        margin-bottom: 20px;
+    }
+
+    #page1 .page1-title { font-size: 1.5em; margin: 15px 0 5px 0; }
+    #page1 .page1-subtitle { font-size: 0.85em; margin: 5px 0; }
+
+    #page2 .cursive { font-size: 1.6em; }
+    #page2 .btn { padding: 12px 25px; font-size: 1em; }
+
+    #page3 .cursive { font-size: 1.8em; }
+    #page3 .subtitle { font-size: 1em; }
+    #page3 .btn { padding: 12px 25px; font-size: 1em; }
+
+    #page4 .cursive { font-size: 1.6em; }
+    #page4 > p { font-size: 0.95em; }
+    #page4 img { width: 140px; }
+
+    #page5 .cursive { font-size: 1.8em; }
+    #page5 > p { font-size: 1em; }
+    #page5 .btn { padding: 12px 25px; font-size: 1em; }
+
+    #page6 .card { width: 90%; padding: 30px 20px; }
+    #page6 .cursive { font-size: 1.8em; }
+    #page6 img { margin: 15px 0; }
+
+    #page7 .card { width: 95%; max-width: 100%; padding: 25px 20px; }
+    #page7 .cursive { font-size: 1.8em; }
+    #page7 .letter-text { font-size: 1em; line-height: 1.5; margin: 15px 0; }
+    #page7 .signature { font-size: 1em; }
+    #page7 .btn { padding: 12px 25px; font-size: 1em; }
+
+    #page8 .cursive { font-size: 1.8em; margin: 6px 0; }
+    #page8 > p:first-of-type { font-size: 1.1em; margin: 4px 0; }
+    #page8 img { height: 120px; }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 10px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .photo-card:nth-child(1),
+    .photo-card:nth-child(2),
+    .photo-card:nth-child(3),
+    .photo-card:nth-child(4),
+    .photo-card:nth-child(5),
+    .photo-card:nth-child(6),
+    .photo-card:nth-child(7),
+    .photo-card:nth-child(8) {
+        transform: rotate(0deg) !important;
+    }
+
+    .hearts-wave {
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .heart-float { font-size: 1.2em; }
+}
+
+/* Mobile Responsiveness - Small Phones */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .page {
+        max-width: 100%;
+        padding: 10px 5px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+
+    .cursive { font-size: 1.4em; }
+    .subtitle { font-size: 0.75em; }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .btn-container {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .back-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1em;
+        top: 10px;
+        left: 10px;
+    }
+
+    /* Page-specific adjustments for small phones */
+    #page1 .page {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    #page1 .envelope {
+        width: 220px;
+        height: 150px;
+        margin-bottom: 15px;
+    }
+
+    #page1 .page1-title { font-size: 1.2em; margin: 10px 0 3px 0; }
+    #page1 .page1-subtitle { font-size: 0.75em; margin: 3px 0; }
+
+    #page2 .cursive { font-size: 1.3em; }
+    #page2 img { width: 140px; }
+
+    #page3 .cursive { font-size: 1.4em; }
+    #page3 img { width: 150px; }
+
+    #page4 img { width: 120px; }
+    #page4 .cursive { font-size: 1.3em; }
+    #page4 > p { font-size: 0.9em; }
+
+    #page5 .cursive { font-size: 1.4em; }
+    #page5 > p { font-size: 0.9em; }
+    #page5 img { width: 180px; }
+
+    #page6 .card { width: 100%; padding: 20px 15px; }
+    #page6 img { margin: 12px 0; }
+
+    #page7 .card { width: 100%; padding: 20px 15px; }
+    #page7 .cursive { font-size: 1.4em; }
+    #page7 .letter-text { font-size: 0.95em; line-height: 1.4; margin: 12px 0; }
+
+    #page8 .cursive { font-size: 1.4em; margin: 4px 0; }
+    #page8 > p:first-of-type { font-size: 1em; }
+    #page8 img { height: 100px; }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 0 5px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .photo-card:nth-child(1),
+    .photo-card:nth-child(2),
+    .photo-card:nth-child(3),
+    .photo-card:nth-child(4),
+    .photo-card:nth-child(5),
+    .photo-card:nth-child(6),
+    .photo-card:nth-child(7),
+    .photo-card:nth-child(8) {
+        transform: rotate(0deg) !important;
+    }
+
+    .hearts-wave {
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .heart-float { font-size: 1em; }
+}
